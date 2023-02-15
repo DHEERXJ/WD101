@@ -8,26 +8,26 @@ const entry_histroy = document.getElementById("dat");
 const date = new Date();
 let list_items = []
 const dateValidity = (start_date) => {
-    const date_use=start_date.replace("-",".")
-    const date_user=date_use.split(".").map((d) => Number(d))
-    const year_date = (date_user[0] >= (date.getFullYear() - 55) && date_user[0] <= (date.getFullYear() - 18))
-    let month_date;
-    let day_date;
+    const date_u=start_date
+    const date_user=date_u.split("-").map((d) => Number(d))
+    const date_year = (date_user[0] >= (date.getFullYear() - 55) && date_user[0] <= (date.getFullYear() - 18))
+    let date_month;
+    let date_day;
     if (date_user[0] === date.getFullYear() - 55) {
-        month_date = date_user[1] >= (date.getMonth() + 1)
-        day_date = date_user[2] >= (date.getDate())
-    } else if (year_date) {
-        month_date = true
-        day_date = true
+        date_month = date_user[1] >= (date.getMonth() + 1)
+        date_day = date_user[2] >= (date.getDate())
+    } else if (date_year) {
+        date_month = true
+        date_day = true
     } else if (date_user[0] === date.getFullYear() - 18) {
-        month_date = date_user[1] <= (date.getMonth() + 1)
-        day_date = date_user[2] <= (date.getDate())
+        date_month = date_user[1] <= (date.getMonth() + 1)
+        date_day = date_user[2] <= (date.getDate())
     } else {
-        month_date = false
-        day_date = false
+        date_month = false
+        date_day = false
     }
-    finish=year_date && month_date && day_date;
-    return finish
+    final=date_year && date_month && date_day;
+    return final
 }
 
 const isvalid = (element) => {
